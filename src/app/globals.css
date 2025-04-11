@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
 h1 {
-  @apply text-[1.5rem] font-bold text-gray-900;
+  @apply text-[1.5rem] font-bold text-gray-900 text-shadow-2xs;
+}
+
+p {
+  @apply text-[1rem] font-normal text-gray-600 text-shadow-2xs;
+}
+
+input {
+  @apply w-full px-4 py-2 font-medium  border-2 border-gray-200 rounded-lg focus:border-amber-500 focus:outline-none;
 }

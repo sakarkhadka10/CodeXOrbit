@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { FaBars, FaMagnifyingGlass, FaXmark } from "react-icons/fa6";
+import { siteConfig } from "@/lib/siteConfig";
 
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -18,14 +19,14 @@ const NavBar = () => {
   ];
 
   return (
-    <header className="fixed top-0 w-full bg-white text-gray-900 px-6 lg:px-20 py-4 shadow-md z-50">
+    <header className="fixed top-0 w-full bg-white text-gray-900 px-1 sm:px-4 md:px-6 lg:px-20 py-3 sm:py-4 shadow-md z-50">
       {/* Desktop View */}
       <div className="hidden lg:block">
         <nav className="flex justify-between items-center max-w-7xl mx-auto">
           <Link href="/" className="flex-shrink-0">
             <Image
-              src="/logo/UvaisCodes.png"
-              alt="UvaisCodes Logo"
+              src={siteConfig.logoPath}
+              alt={`${siteConfig.name} Logo`}
               width={200}
               height={60}
               className="w-48 h-12"
@@ -73,11 +74,11 @@ const NavBar = () => {
 
           <Link href="/" className="flex-shrink-0">
             <Image
-              src="/logo/UvaisCodes.png"
-              alt="UvaisCodes Logo"
+              src={siteConfig.logoPath}
+              alt={`${siteConfig.name} Logo`}
               width={160}
               height={48}
-              className="w-40 h-10"
+              className="w-36 h-9"
               priority
             />
           </Link>
@@ -101,7 +102,8 @@ const NavBar = () => {
         <div className="p-4">
           <div className="flex justify-between items-center mb-6">
             <Link href="/" className="text-xl font-bold">
-              <span className="text-amber-500">Uvais</span>Codes
+              <span className="text-amber-500">{siteConfig.name.split("Codes")[0]}</span>
+              Codes
             </Link>
             <button
               onClick={() => setShowMenu(false)}

@@ -23,11 +23,11 @@ const Hero = () => {
               </span>{" "}
               With {siteConfig.name}
             </h2>
-            <p className="text-base sm:text-lg text-gray-200 max-w-xl mx-auto lg:mx-0">
+            <span className="text-base text-[1rem] font-normal text-white  mx-auto text-shadow-2xs">
               {siteConfig.description} Blast off into a world of tutorials,
               projects, and resources designed to elevate your development
               skills.
-            </p>
+            </span>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Link
                 href="#projects"

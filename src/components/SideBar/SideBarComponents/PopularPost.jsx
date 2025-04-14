@@ -2,6 +2,7 @@
 import React, { useState, useEffect, memo } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { postCaching } from "@/lib/siteConfig";
 
 const PopularPost = memo(() => {
   const [popularPosts, setPopularPosts] = useState([]);
@@ -11,50 +12,12 @@ const PopularPost = memo(() => {
     const fetchPopularPosts = async () => {
       try {
         const response = await fetch("/api/popular-posts", {
-          cache: "force-cache",
-        }); // Enable caching
+          cache: postCaching.cache,
+        });
         const data = await response.json();
         setPopularPosts(data.slice(0, 4)); // Limit to 4 posts upfront
       } catch (error) {
         console.error("Error fetching popular posts:", error);
-        setPopularPosts([
-          {
-            id: 1,
-            title: "100+ Frontend Projects to Level Up",
-            coverImage: "/img/frontendbg.png",
-            description: "Boost your skills with these projects.",
-            author: "CodeX Orbit",
-            date: "Oct 31, 2024",
-            category: "project",
-          },
-          {
-            id: 2,
-            title: "Master Frontend with 100+ Projects",
-            coverImage: "/img/frontendbg.png",
-            description: "Practical coding challenges.",
-            author: "CodeX Orbit",
-            date: "Oct 31, 2024",
-            category: "frontend",
-          },
-          {
-            id: 3,
-            title: "Frontend Skills: 100+ Projects",
-            coverImage: "/img/frontendbg.png",
-            description: "Level up your dev game.",
-            author: "CodeX Orbit",
-            date: "Oct 31, 2024",
-            category: "code",
-          },
-          {
-            id: 4,
-            title: "100+ Projects for Frontend Devs",
-            coverImage: "/img/frontendbg.png",
-            description: "Hands-on coding practice.",
-            author: "CodeX Orbit",
-            date: "Oct 31, 2024",
-            category: "code",
-          },
-        ]);
       } finally {
         setLoading(false);
       }

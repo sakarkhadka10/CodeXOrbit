@@ -2,6 +2,7 @@
 import React, { useState, useEffect, memo } from "react";
 import BlogPostCard from "../ui/BlogPostCard";
 import { FaArrowDown } from "react-icons/fa6";
+import { postCaching } from "@/lib/siteConfig";
 
 const Posts = memo(() => {
   const [posts, setPosts] = useState([]);
@@ -11,67 +12,14 @@ const Posts = memo(() => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch("/api/posts", { cache: "force-cache" }); // Enable caching
+        const response = await fetch("/api/posts", {
+          cache: postCaching.cache,
+        });
+
         const data = await response.json();
-        setPosts(data.slice(0, 10)); // Limit initial fetch to 10 posts
+        setPosts(data);
       } catch (error) {
         console.error("Error fetching posts:", error);
-        setPosts([
-          {
-            id: 1,
-            title: "100+ Frontend Projects to Level Up",
-            coverImage: "/img/frontendbg.png",
-            description: "Boost your skills with YouTube tutorials.",
-            author: "CodeX Orbit",
-            date: "Oct 31, 2024",
-            category: "project",
-          },
-          {
-            id: 2,
-            title: "Master Frontend with 100+ Projects",
-            coverImage: "/img/frontendbg.png",
-            description: "Practical coding challenges await.",
-            author: "CodeX Orbit",
-            date: "Oct 31, 2024",
-            category: "frontend",
-          },
-          {
-            id: 3,
-            title: "Frontend Skills: 100+ Projects",
-            coverImage: "/img/frontendbg.png",
-            description: "Level up your dev game now.",
-            author: "CodeX Orbit",
-            date: "Oct 31, 2024",
-            category: "code",
-          },
-          {
-            id: 4,
-            title: "100+ Projects for Frontend Devs",
-            coverImage: "/img/frontendbg.png",
-            description: "Hands-on coding practice.",
-            author: "CodeX Orbit",
-            date: "Oct 31, 2024",
-            category: "code",
-          },
-          {
-            id: 5,
-            title: "Frontend Mastery: 100+ Projects",
-            coverImage: "/img/frontendbg.png",
-            description: "Learn coding with YouTube.",
-            author: "CodeX Orbit",
-            date: "Oct 31, 2024",
-            category: "code",
-          },
-          {
-            id: 6,
-            title: "100+ Frontend Challenges",
-            coverImage: "/img/frontendbg.png",
-            description: "Elevate your skills today.",
-            author: "CodeX Orbit",
-            date: "Oct 31, 2024",
-            category: "code",
-          },
-        ]);
       } finally {
         setLoading(false);
       }
@@ -81,7 +29,7 @@ const Posts = memo(() => {
   }, []);
 
   const handleLoadMore = () => {
-    setVisiblePosts((prev) => Math.min(prev + 5, posts.length)); // Prevent exceeding available posts
+    setVisiblePosts((prev) => prev + 5);
   };
 
   if (loading) {
@@ -114,7 +62,7 @@ const Posts = memo(() => {
     <div className="container mx-auto px-1 sm:px-4 py-8">
       <div className="grid grid-cols-1 gap-6">
         {posts.slice(0, visiblePosts).map((post) => (
-          <BlogPostCard key={post.id} {...post} /> // Use post.id as key
+          <BlogPostCard key={post.id} {...post} />
         ))}
       </div>
 

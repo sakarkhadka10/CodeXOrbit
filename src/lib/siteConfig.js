@@ -17,4 +17,12 @@ export const siteConfig = {
     twitter: "https://twitter.com",
     linkedin: "https://linkedin.com",
   },
+  features: {
+    enablePostCaching: true, // Feature flag to enable/disable post caching
+  },
+};
+
+// Fix: Changed from default export to named export
+export const postCaching = {
+  cache: siteConfig.features.enablePostCaching ? "force-cache" : "no-store",
 };

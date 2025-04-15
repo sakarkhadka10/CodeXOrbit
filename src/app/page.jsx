@@ -10,7 +10,7 @@ export default function Home() {
         <section className="col-span-1 lg:col-span-9 w-full">
           <Posts />
         </section>
-        <section className="col-span-1 lg:col-span-3 w-full">
+        <section className="col-span-1 lg:col-span-3 w-full pt-8">
           <SideBar />
         </section>
       </div>

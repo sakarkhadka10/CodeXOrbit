@@ -13,7 +13,7 @@ import {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen mx-2 sm:mx-8 md:mx-12 lg:mx-16 bg-[#f8fafc] py-16">
+    <div className="min-h-screen mx-2 sm:mx-8 md:mx-12 lg:mx-16 bg-[#f8fafc] mt-28">
       <div className="grid grid-cols-1 lg:grid-cols-12 place-items-start gap-4 pb-16 px-1 sm:px-4 md:px-6 lg:px-20">
         <section className="col-span-1 lg:col-span-9 w-full">
           <div className="bg-white rounded-xl shadow-sm p-6 md:p-8">

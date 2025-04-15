@@ -13,7 +13,6 @@ const NavBar = () => {
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Tutorials", href: "/tutorials" },
-    { name: "Projects", href: "/projects" },
     { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
   ];
@@ -102,7 +101,9 @@ const NavBar = () => {
         <div className="p-4">
           <div className="flex justify-between items-center mb-6">
             <Link href="/" className="text-xl font-bold">
-              <span className="text-amber-500">{siteConfig.name.split("Codes")[0]}</span>
+              <span className="text-amber-500">
+                {siteConfig.name.split("Codes")[0]}
+              </span>
               Codes
             </Link>
             <button
